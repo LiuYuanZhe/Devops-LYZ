@@ -131,10 +131,10 @@ $ ansible-playbook /etc/ansible/21.addmaster.yml
 ### 验证
 
 ```
-# 在新节点master 服务状态
-$ systemctl status kube-apiserver 
-$ systemctl status kube-controller-manager
-$ systemctl status kube-scheduler
+# 在master节点 服务状态
+$ systemctl status kube-apiserver.service 
+$ systemctl status kube-controller-manager.service
+$ systemctl status kube-scheduler.service
 
 # 查看新master的服务日志
 $ journalctl -u kube-apiserver -f

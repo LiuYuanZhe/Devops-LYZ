@@ -79,6 +79,39 @@ kubectl log -f podname -n namespace
 
 
 
+问题：pod莫名重启
+
+定位问题：先从主节点使用命令进行排查，使用`kubectl get pod -n namespace -o wide`定位该pod位于那个node上,使用`kubectl describe pod-n namespace `，定位问题的具体原因，ssh到相应node机器，使用`journalctl -u kubelet`进行故障的查看。
+
+原因：网络插件cni与docker接口冲突，无法找到命名空间，终结pod。
+
+https://www.colabug.com/3973167.html
+
+搜索：Flannel and docker Interface Conflict
+
+
+
+问题：日志与机器时间不一致
+
+原因：
+
+- 容器内事件与当前node节点事件不一致
+- 容器内的应用实践与当前容器时间不一致 
+
+一般这种情况都是差八个小时，时区不对，kubernetes的节点时间是同步的，使用chrony同步。
+
+解决方法
+
+- 把当前容器的时间挂载机器的时间，挂载位置：/etc/localtime
+
+- 在java启动时增加参数例如命令：
+
+  ```java
+  java -jar -Duser.timeone=GMT+8 jarpackagename.jar
+  ```
+
+  
+
 
 
 
