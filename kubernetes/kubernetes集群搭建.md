@@ -6,3 +6,6 @@ kubernetes环境搭建
 
 3.准备kubespray项目，编写相关ansible
 
+集群架构图
+
+![](/Users/rqw1991/Devops-LYZ/kubernetes/img/kubernetes测试集群.jpg)
