@@ -121,7 +121,7 @@ spec:
 
 
 
-configmap(optional是可选性，不可选如果未读到变量会阻止pod启动)
+configmap
 
 ```shell
 apiVersion: v1
