@@ -1,0 +1,446 @@
+
+<!DOCTYPE HTML>
+<html lang="" >
+    <head>
+        <meta charset="UTF-8">
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <title>kubernetes pod的自动伸缩 · GitBook</title>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="description" content="">
+        <meta name="generator" content="GitBook 3.2.3">
+        
+        
+        
+    
+    <link rel="stylesheet" href="../gitbook/style.css">
+
+    
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-highlight/website.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-search/search.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-fontsettings/website.css">
+                
+            
+        
+
+    
+
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+
+        
+    
+    
+    <meta name="HandheldFriendly" content="true"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <link rel="apple-touch-icon-precomposed" sizes="152x152" href="../gitbook/images/apple-touch-icon-precomposed-152.png">
+    <link rel="shortcut icon" href="../gitbook/images/favicon.ico" type="image/x-icon">
+
+    
+    <link rel="next" href="kubernetes相关周边组件搭建.html" />
+    
+    
+    <link rel="prev" href="kubernetes部署项目-可视化平台.html" />
+    
+
+    </head>
+    <body>
+        
+<div class="book">
+    <div class="book-summary">
+        
+            
+<div id="book-search-input" role="search">
+    <input type="text" placeholder="Type to search" />
+</div>
+
+            
+                <nav role="navigation">
+                
+
+
+<ul class="summary">
+    
+    
+
+    
+
+    
+        
+        
+    
+        <li class="chapter " data-level="1.1" data-path="../">
+            
+                <a href="../">
+            
+                    
+                    Introduction
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2" data-path="../Jenkins持续集成文档/Jenkins持续集成.html">
+            
+                <a href="../Jenkins持续集成文档/Jenkins持续集成.html">
+            
+                    
+                    Jenkinsfile编写
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+    
+        
+        <li class="divider"></li>
+        
+        
+    
+        <li class="chapter " data-level="2.1" data-path="../docker/docker企业级仓库之Harbor的使用.html">
+            
+                <a href="../docker/docker企业级仓库之Harbor的使用.html">
+            
+                    
+                    docker仓库harbor的使用
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+    
+        
+        <li class="divider"></li>
+        
+        
+    
+        <li class="chapter " data-level="3.1" data-path="../docker/docker环境安装.html">
+            
+                <a href="../docker/docker环境安装.html">
+            
+                    
+                    docker安装
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+    
+        
+        <li class="divider"></li>
+        
+        
+    
+        <li class="chapter " data-level="4.1" data-path="../docker/docker制作一个镜像.html">
+            
+                <a href="../docker/docker制作一个镜像.html">
+            
+                    
+                    镜像制作与使用
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+    
+        
+        <li class="divider"></li>
+        
+        
+    
+        <li class="chapter " data-level="5.1" data-path="../docker/docker harbor安装.html">
+            
+                <a href="../docker/docker harbor安装.html">
+            
+                    
+                    docker仓库harbor安装
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+    
+        
+        <li class="divider"></li>
+        
+        
+    
+        <li class="chapter " data-level="6.1" data-path="kubernetes集群搭建.html">
+            
+                <a href="kubernetes集群搭建.html">
+            
+                    
+                    kubernetes的集群搭建
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+    
+        
+        <li class="divider"></li>
+        
+        
+    
+        <li class="chapter " data-level="7.1" data-path="kubernetes部署项目-可视化平台.html">
+            
+                <a href="kubernetes部署项目-可视化平台.html">
+            
+                    
+                    kubernetes 部署项目
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+    
+        
+        <li class="divider"></li>
+        
+        
+    
+        <li class="chapter active" data-level="8.1" data-path="kubernetes pod自动伸缩-创建hpa.html">
+            
+                <a href="kubernetes pod自动伸缩-创建hpa.html">
+            
+                    
+                    kubernetes pod的自动伸缩
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+    
+        
+        <li class="divider"></li>
+        
+        
+    
+        <li class="chapter " data-level="9.1" data-path="kubernetes相关周边组件搭建.html">
+            
+                <a href="kubernetes相关周边组件搭建.html">
+            
+                    
+                    kubernetes的相关组件的搭建
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+    
+
+    <li class="divider"></li>
+
+    <li>
+        <a href="https://www.gitbook.com" target="blank" class="gitbook-link">
+            Published with GitBook
+        </a>
+    </li>
+</ul>
+
+
+                </nav>
+            
+        
+    </div>
+
+    <div class="book-body">
+        
+            <div class="body-inner">
+                
+                    
+
+<div class="book-header" role="navigation">
+    
+
+    <!-- Title -->
+    <h1>
+        <i class="fa fa-circle-o-notch fa-spin"></i>
+        <a href=".." >kubernetes pod的自动伸缩</a>
+    </h1>
+</div>
+
+
+
+
+                    <div class="page-wrapper" tabindex="-1" role="main">
+                        <div class="page-inner">
+                            
+<div id="book-search-results">
+    <div class="search-noresults">
+    
+                                <section class="normal markdown-section">
+                                
+                                <h4 id="kubernetes-pod&#x5B9E;&#x73B0;&#x81EA;&#x52A8;&#x6C34;&#x5E73;&#x4F38;&#x7F29;-&#x521B;&#x5EFA;hpa">kubernetes pod&#x5B9E;&#x73B0;&#x81EA;&#x52A8;&#x6C34;&#x5E73;&#x4F38;&#x7F29;-&#x521B;&#x5EFA;HPA</h4>
+<p>kubernetes&#x7ECF;&#x5E38;&#x9047;&#x5230;&#x8D44;&#x6E90;&#x7D27;&#x5F20;&#x9700;&#x8981;&#x6269;&#x5BB9;&#x7684;&#x60C5;&#x51B5;&#xFF0C;&#x8FD9;&#x65F6;&#x53EF;&#x4EE5;&#x624B;&#x52A8;&#x7684;&#x53BB;&#x5BF9;deploy&#x6216;&#x8005;replica set&#x8FDB;&#x884C;&#x624B;&#x52A8;&#x547D;&#x4EE4;&#x6269;&#x5BB9;&#xFF0C;&#x547D;&#x4EE4;</p>
+<pre><code class="lang-shell"># n&#x4E3A;&#x526F;&#x672C;&#x6570;
+kubectl scale deployment -n namespace --replicas=n
+</code></pre>
+<p>&#x8FD9;&#x6837;&#x53EF;&#x4EE5;&#x901A;&#x8FC7;&#x6269;&#x5BB9;deployment&#x6216;&#x8005;rs&#x7684;&#x6570;&#x91CF;&#x6765;&#x8FBE;&#x5230;&#x6269;&#x5BB9;pod&#x7684;&#x76EE;&#x6807;&#x3002;</p>
+<p>&#x4F46;&#x662F;&#x8FD9;&#x79CD;&#x6269;&#x5BB9;&#x65B9;&#x5F0F;&#x5728;&#x7ECF;&#x8FC7;&#x4E86;&#x5E94;&#x7528;&#x5CF0;&#x503C;&#x540E;&#xFF0C;&#x5982;&#x679C;&#x60F3;&#x91CA;&#x653E;&#x8D44;&#x6E90;&#x7A7A;&#x95F4;&#xFF0C;&#x8FD8;&#x9700;&#x8981;&#x624B;&#x52A8;&#x7684;&#x53BB;&#x5C06;&#x526F;&#x672C;&#x6570;&#x964D;&#x4F4E;&#xFF0C;&#x8FD9;&#x4E0D;&#x80FD;&#x8FBE;&#x5230;&#x91CA;&#x653E;&#x4EBA;&#x5DE5;&#x7684;&#x6700;&#x5927;&#x76EE;&#x6807;&#x3002;&#x518D;&#x540E;&#x6765;&#x7684;kubernetes&#x7248;&#x672C;&#x4E2D;&#xFF0C;&#x5F15;&#x8FDB;&#x4E86;Horizontal Pod Autoscaler&#xFF08;HPA&#xFF09;&#x8FD9;&#x4E2A;&#x6982;&#x5FF5;&#xFF0C;pod&#x53EF;&#x4EE5;&#x6839;&#x636E;cpu&#x8D44;&#x6E90;&#x8FDB;&#x884C;&#x81EA;&#x52A8;&#x7684;&#x6269;&#x7F29;&#x5BB9;&#xFF0C;&#x4F9D;&#x636E;heapster&#x548C;matric-server&#x7684;&#x76D1;&#x63A7;&#x6570;&#x636E;&#x3002;</p>
+<ul>
+<li>autoscaling/v1: CPU </li>
+<li>autoscaling/v2alpha1 &#x5185;&#x5B58; &#x81EA;&#x5B9A;&#x4E49;metrics &#x591A;metrics&#x7EC4;&#x5408;: &#x6839;&#x636E;&#x6BCF;&#x4E2A;metric&#x7684;&#x503C;&#x8BA1;&#x7B97;&#x51FA;scale&#x7684;&#x503C;&#xFF0C;&#x5E76;&#x5C06;&#x6700;&#x5927;&#x7684;&#x90A3;&#x4E2A;&#x503C;&#x4F5C;&#x4E3A;&#x6269;&#x5BB9;&#x7684;&#x6700;&#x7EC8;&#x7ED3;&#x679C;</li>
+</ul>
+<h6 id="&#x521B;&#x5EFA;hpa">&#x521B;&#x5EFA;hpa</h6>
+<pre><code class="lang-shell">apiVersion: version/v1
+# &#x521B;&#x5EFA;hpa&#x7684;yaml&#x7C7B;&#x578B;
+kind: HorizontalPodAutoscaler
+metadata:
+  name: public-visplat-instance
+  namespace: test
+spec:
+  scaleTargetRef:
+  # autoscaling/v1: CPU 
+  # autoscaling/v2alpha1 &#x5185;&#x5B58; &#x81EA;&#x5B9A;&#x4E49;metrics &#x591A;metrics&#x7EC4;&#x5408;: &#x6839;&#x636E;&#x6BCF;&#x4E2A;metric&#x7684;&#x503C;&#x8BA1;&#x7B97;&#x51FA;scale&#x7684;&#x503C;&#xFF0C;&#x5E76;&#x5C06;&#x6700;&#x5927;&#x7684;&#x90A3;&#x4E2A;&#x503C;&#x4F5C;&#x4E3A;&#x6269;&#x5BB9;&#x7684;&#x6700;&#x7EC8;&#x7ED3;&#x679C;
+
+    apiVersion: v1
+    # deployment &#x6216;&#x8005; replicacontroller
+    kind: deployment
+    name: public-visplat-instance
+    # &#x6700;&#x5C0F;&#x526F;&#x672C;&#x6570; &#x6700;&#x5927;&#x526F;&#x672C;&#x6570;
+  minReplicas: 1
+  maxReplicas: 10
+  #&#x6269;&#x5BB9;&#x9608;&#x503C;
+  targetCPUUtilizationPercentage: 50
+</code></pre>
+<p>&#x4E5F;&#x53EF;&#x4EE5;&#x6839;&#x636E;&#x547D;&#x4EE4;&#x8FDB;&#x884C;hpa&#x521B;&#x5EFA;</p>
+<pre><code class="lang-shell">kubectl autoscale deployment instancename -n namespace --cpu-percent=x% --min=a --max=b
+</code></pre>
+<p>&#x67E5;&#x770B;hpa</p>
+<pre><code>kubectl get hpa -n namespace
+</code></pre><p><img src="../Users/rqw1991/Devops-LYZ/kubernetes/img/&#x901A;&#x8FC7;hpa&#x8FDB;&#x884C;&#x6269;&#x5BB9;.jpeg" alt=""></p>
+<p><img src="../Users/rqw1991/Devops-LYZ/kubernetes/img/hpa&#x52A8;&#x6001;&#x6269;&#x5BB9;200%.jpeg" alt="img"></p>
+
+                                
+                                </section>
+                            
+    </div>
+    <div class="search-results">
+        <div class="has-results">
+            
+            <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+            <ul class="search-results-list"></ul>
+            
+        </div>
+        <div class="no-results">
+            
+            <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+            
+        </div>
+    </div>
+</div>
+
+                        </div>
+                    </div>
+                
+            </div>
+
+            
+                
+                <a href="kubernetes部署项目-可视化平台.html" class="navigation navigation-prev " aria-label="Previous page: kubernetes 部署项目">
+                    <i class="fa fa-angle-left"></i>
+                </a>
+                
+                
+                <a href="kubernetes相关周边组件搭建.html" class="navigation navigation-next " aria-label="Next page: kubernetes的相关组件的搭建">
+                    <i class="fa fa-angle-right"></i>
+                </a>
+                
+            
+        
+    </div>
+
+    <script>
+        var gitbook = gitbook || [];
+        gitbook.push(function() {
+            gitbook.page.hasChanged({"page":{"title":"kubernetes pod的自动伸缩","level":"8.1","depth":1,"next":{"title":"kubernetes的相关组件的搭建","level":"9.1","depth":1,"path":"kubernetes/kubernetes相关周边组件搭建.md","ref":"kubernetes/kubernetes相关周边组件搭建.md","articles":[]},"previous":{"title":"kubernetes 部署项目","level":"7.1","depth":1,"path":"kubernetes/kubernetes部署项目-可视化平台.md","ref":"kubernetes/kubernetes部署项目-可视化平台.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["livereload"],"pluginsConfig":{"livereload":{},"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"kubernetes/kubernetes pod自动伸缩-创建hpa.md","mtime":"2019-02-23T01:56:33.000Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2019-03-13T06:44:33.912Z"},"basePath":"..","book":{"language":""}});
+        });
+    </script>
+</div>
+
+        
+    <script src="../gitbook/gitbook.js"></script>
+    <script src="../gitbook/theme.js"></script>
+    
+        
+        <script src="../gitbook/gitbook-plugin-livereload/plugin.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-search/search-engine.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-search/search.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-lunr/lunr.min.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-lunr/search-lunr.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-sharing/buttons.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-fontsettings/fontsettings.js"></script>
+        
+    
+
+    </body>
+</html>
+

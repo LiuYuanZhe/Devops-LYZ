@@ -28,3 +28,19 @@
 因此呢，可以修改 c3p0 连接池配置，使 initialPoolSize=0。initialPoolSize 表示连接池初始化时创建的连接数，为0后，c3p0会在第一次接收用户请求时 才建立连接。
 
 结果，没有用
+
+
+
+
+
+
+
+sonarqube 账号密码: admin/admin
+
+token:
+
+liuyuanzhe: 119af2b611fb690815ecd1ce84fd3422c355510a
+
+mvn:
+
+ mvn sonar:sonar   -Dsonar.host.url=http://10.10.70.211:32119   -Dsonar.login=119af2b611fb690815ecd1ce84fd3422c355510a

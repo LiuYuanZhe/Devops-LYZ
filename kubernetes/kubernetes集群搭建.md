@@ -14,13 +14,13 @@ kubernetes环境搭建
 
 **kube-controller-manager** 是集群内部的管理控制中心，负责集群内的Node、Pod副本、服务端点（Endpoint）、命名空间（Namespace）、服务账号（ServiceAccount）、资源定额（ResourceQuota）的管理，当某个Node意外宕机时，Controller Manager会及时发现并执行自动化修复流程，确保集群始终处于预期的工作状态。 
 
-**kube-scheduler** 集群的调度器，负责根据特定的调度算法将pod调度到指定的工作节点上。调度器需要考虑节点和集体 的资源要求、服务质量要求、硬件/软件/政策约束、亲和力和反亲和力规范、数据局部性、负载间干扰、完成期限等。
+**kube-scheduler** 集群的调度器，负责根据特定的调度算法将pod调度到指定的工作节点上。调度器需要考虑节点和集体的资源要求、服务质量要求、硬件/软件/政策约束、亲和力和反亲和力规范、数据局部性、负载间干扰、完成期限等。
 
 **kube-apiserver** 是集群的管理者，负责对外提供接口（restful），配置资源对象，提供功能组件管理集群等功能。
 
 **kubelet** 是集群每个节点最重要的组件，负责管理和维护kubernetes集群上运行的容器，主要是保证集群上的pod的状态与目标状态一致。
 
-**kube-proxy／coredns** 是集群的服务发现与反向代理的组件，保证了集群中的网络通信，监控了集群中service和endpoint的动态变化，主要保证了用户可以通过ip和端口号访问到后端的pod。
+**kube-proxy/coredns** 是集群的服务发现与反向代理的组件，保证了集群中的网络通信，监控了集群中service和endpoint的动态变化，主要保证了用户可以通过ip和端口号访问到后端的pod。
 
 **etcd** 是kv数据库，用于配制共享和服务发现，保证了kubernetes中的数据一致性。较于zk操作简单。
 

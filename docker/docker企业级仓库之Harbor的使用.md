@@ -1,16 +1,31 @@
+## harbor简介与使用
+
+##### 简介：harbor是vmware开源的一款企业级docker registry，通过添加一些企业必需的功能特性，例如安全、标识和管理等，扩展了开源Docker Distribution。作为一个企业级私有Registry服务器，Harbor提供了更好的性能和安全。提升用户使用Registry构建和运行环境传输镜像的效率。Harbor支持安装在多个Registry节点的镜像资源复制，镜像全部保存在私有Registry中， 确保数据和知识产权在公司内部网络中管控。另外，Harbor也提供了高级的安全特性，诸如用户管理，访问控制和活动审计等。
 
 
-# harbor的使用
+
+##### harbor的特性
+
+- **基于角色的访问控制** ：用户与Docker镜像仓库通过“项目”进行组织管理，一个用户可以对多个镜像仓库在同一项目（project）里有不同的权限。
+- **镜像复制** ： 镜像可以在多个Registry实例中复制（同步）。尤其适合于负载均衡，高可用，混合云和多云的场景。
+- **图形化用户界面** ： 用户可以通过浏览器来浏览，检索当前Docker镜像仓库，管理项目和命名空间。
+- **AD/LDAP 支持** ： Harbor可以集成企业内部已有的AD/LDAP，用于鉴权认证管理。
+- **审计管理** ： 所有针对镜像仓库的操作都可以被记录追溯，用于审计管理。
+- **国际化** ： 已拥有英文、中文、德文、日文和俄文的本地化版本。更多的语言将会添加进来。
+- **RESTful API** ： RESTful API 提供给管理员对于Harbor更多的操控, 使得与其它管理软件集成变得更容易。
+- **部署简单** ： 提供在线和离线两种安装工具， 也可以安装到vSphere平台(OVA方式)虚拟设备。
+
+### harbor的使用
 
 默认harbor搭建完成，docker可以连接harbor仓库，并登陆成功。
 
-### harbor登录
+#### harbor登录
 
 成功打开web harbor页面，如果http登录，保证80端口未被占用。
 
-![img](/Users/rqw1991/Devops-LYZ/docker/harbor使用img/harbor.jpeg)
+![img](./harbor使用img/harbor.jpeg)
 
-![img](/Users/rqw1991/Devops-LYZ/docker/harbor使用img/harbor仓库项目.jpeg)
+![img](./harbor使用img/harbor仓库项目.jpeg)
 
 我们可以看到系统各个模块如下：
 
@@ -44,13 +59,13 @@ harbor中每一个用户创建的项目都有独立的镜像权限，项目可�
 
 创建项目：
 
-![img](/Users/rqw1991/Devops-LYZ/docker/harbor使用img/创建项目.png)
+![img](./harbor使用img/创建项目.png)
 
-![img](/Users/rqw1991/Devops-LYZ/docker/harbor使用img/test-project项目页面.png)
+![img](./harbor使用img/test-project项目页面.png)
 
 项目的权限分配：
 
-![img](/Users/rqw1991/Devops-LYZ/docker/harbor使用img/test项目成员.jpeg)
+![img](./harbor使用img/test项目成员.jpeg)
 
 项目管理员：读写权限，同时拥有用户管理/镜像扫描等管理权限
 
@@ -66,15 +81,15 @@ harbor中每一个用户创建的项目都有独立的镜像权限，项目可�
 
 向指定的仓库中推送镜像。在指定的项目中点击推送镜像会弹出相应的命令，到推送镜像的docker节点上执行命令，将命令中的镜像和版本填写完整，
 
-![img](/Users/rqw1991/Devops-LYZ/docker/harbor使用img/推送镜像.jpeg)
+![img](./harbor使用img/推送镜像.jpeg)
 
  
 
-![img](/Users/rqw1991/Devops-LYZ/docker/harbor使用img/推送镜像命令.jpeg)
+![img](./harbor使用img/推送镜像命令.jpeg)
 
 推送时一定要把域名换为http地址，否则可能不成功。
 
-![img](/Users/rqw1991/Devops-LYZ/docker/harbor使用img/test-project镜像仓库.png) 
+![img](./harbor使用img/test-project镜像仓库.png) 
 
 ### 项目权限分离
 
@@ -82,27 +97,27 @@ harbor中每一个用户创建的项目都有独立的镜像权限，项目可�
 
 用户管理：
 
-![img](/Users/rqw1991/Devops-LYZ/docker/harbor使用img/用户管理.jpeg)
+![img](./harbor使用img/用户管理.jpeg)
 
 以test-project项目为例：
 
-![img](/Users/rqw1991/Devops-LYZ/docker/harbor使用img/test项目成员.jpeg)
+![img](./harbor使用img/test项目成员.jpeg)
 
 它的成员为管理员与test01用户。
 
 test01用户的页面：
 
-![img](/Users/rqw1991/Devops-LYZ/docker/harbor使用img/test01用户页面.jpeg)
+![img](./harbor使用img/test01用户页面.jpeg)
 
 可以看到该项目，其他用户不可见。
 
-![img](/Users/rqw1991/Devops-LYZ/docker/harbor使用img/xuxuebin页面.jpeg)
+![img](./harbor使用img/xuxuebin页面.jpeg)
 
  
 
 借用一张图片
 
-![img](/Users/rqw1991/Devops-LYZ/docker/harbor使用img/harbor关系图.png)
+![img](./harbor使用img/harbor关系图.png)
 
 harbor的仓库同步
 
@@ -119,7 +134,7 @@ harbor的仓库同步
 
 仓库管理页面中可以添加要纳入的仓库：
 
-![img](/Users/rqw1991/Devops-LYZ/docker/harbor使用img/新建目标对象仓库.png)
+![img](./harbor使用img/新建目标对象仓库.png)
 
 可以使用http/https，在上一篇中有介绍。
 
@@ -127,11 +142,11 @@ harbor的仓库同步
 
 进入复制管理页面新建复制规则：
 
-![img](/Users/rqw1991/Devops-LYZ/docker/harbor使用img/新建复制规则.png)
+![img](./harbor使用img/新建复制规则.png)
 
-![img](/Users/rqw1991/Devops-LYZ/docker/harbor使用img/复制管理.png)
+![img](./harbor使用img/复制管理.png)
 
-![img](/Users/rqw1991/Devops-LYZ/docker/harbor使用img/仓库管理.jpeg)
+![img](./harbor使用img/仓库管理.jpeg)
 
 在每个项目中都可以建立自己的复制规则。
 
@@ -141,6 +156,6 @@ harbor的仓库同步
 
 在实际的企业级生产运维场景，往往需要跨地域，跨层级进行镜像的同步复制，比如集团企业从总部到省公司，由省公司再市公司的场景。
 
-![img](/Users/rqw1991/Devops-LYZ/docker/harbor使用img/多harbor.png)
+![img](./harbor使用img/多harbor.png)
 
 从一个harbor到更多的harbor。

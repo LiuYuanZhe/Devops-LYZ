@@ -119,7 +119,7 @@ kubectl get no
 ```
 ...
 [new-master]
-192.168.1.5                 	# 新增 master节点
+10.10.70.215                 	# 新增 master节点
 ```
 
 - 执行安装脚本

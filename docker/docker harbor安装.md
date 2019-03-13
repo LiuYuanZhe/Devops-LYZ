@@ -1,19 +1,4 @@
-##  harbor简介
-
-harbor是vmware开源的一款企业级docker registry，通过添加一些企业必需的功能特性，例如安全、标识和管理等，扩展了开源Docker Distribution。作为一个企业级私有Registry服务器，Harbor提供了更好的性能和安全。提升用户使用Registry构建和运行环境传输镜像的效率。Harbor支持安装在多个Registry节点的镜像资源复制，镜像全部保存在私有Registry中， 确保数据和知识产权在公司内部网络中管控。另外，Harbor也提供了高级的安全特性，诸如用户管理，访问控制和活动审计等。
-
-##  harbor的特性
-
-- **基于角色的访问控制** ：用户与Docker镜像仓库通过“项目”进行组织管理，一个用户可以对多个镜像仓库在同一项目（project）里有不同的权限。
-- **镜像复制** ： 镜像可以在多个Registry实例中复制（同步）。尤其适合于负载均衡，高可用，混合云和多云的场景。
-- **图形化用户界面** ： 用户可以通过浏览器来浏览，检索当前Docker镜像仓库，管理项目和命名空间。
-- **AD/LDAP 支持** ： Harbor可以集成企业内部已有的AD/LDAP，用于鉴权认证管理。
-- **审计管理** ： 所有针对镜像仓库的操作都可以被记录追溯，用于审计管理。
-- **国际化** ： 已拥有英文、中文、德文、日文和俄文的本地化版本。更多的语言将会添加进来。
-- **RESTful API** ： RESTful API 提供给管理员对于Harbor更多的操控, 使得与其它管理软件集成变得更容易。
-- **部署简单** ： 提供在线和离线两种安装工具， 也可以安装到vSphere平台(OVA方式)虚拟设备。
-
- 
+##### 前置：安装harbor需要对docker registry仓库有简单了解，harbor是实现了多租户模式的分布式镜像管理工具，包含了docker镜像仓库，此工具使用shell脚本安装，需要提前下载镜像包，并且安装docker-compose编排工具。
 
 # Harbor的安装与部署
 
@@ -88,6 +73,8 @@ project_creation_restriction = adminonly
 执行安装脚本
 
 `/usr/local/harbor/install.sh`
+
+此脚本可以将下载的离线镜像包倒入当前docker节点并且启动docker-compose.yml将harbor启动。
 
 开始会加载镜像，由于镜像包都已经离线下载，只需要等待即可。
 

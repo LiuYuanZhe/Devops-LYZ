@@ -1,4 +1,4 @@
-# kubernetes 部署节点准备（centos系统）
+# kubernetes 部署节点准备（centos7.4系统）
 
 修改hosts文件，添加想要部署的集群机器
 

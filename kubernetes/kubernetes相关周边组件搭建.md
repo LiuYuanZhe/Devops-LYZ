@@ -1,6 +1,6 @@
-### helm（部署管理工具）
+## 本目录下所有组件部署于kubernetes-v1.12.4版本，docker-18.06.1-ce版本
 
-helm算是k8s集群的应用包管理工具，希望像linux 系统的`RPM` `DPKG`那样成功；确实在k8s上部署复杂一点的应用很麻烦，需要管理很多yaml文件（configmap,controller,service,rbac,pv,pvc等等），而helm能够整齐管理这些文档：版本控制，参数化安装，方便的打包与分享等
+### helm（集群资源部署管理工具）
 
 内网部署，从下载的镜像包中将helm的镜像tiller导入到镜像仓库。
 
@@ -19,7 +19,7 @@ mkdir -p /opt/helm-repo
 # 2.启动helm repo server,如果要其他服务器访问，改为本地IP
 nohup helm serve --address 127.0.0.1:8879 --repo-path /opt/helm-repo &
 # 3.更改helm 配置文件
-将/etc/ansible/role/helm/default/main.yml中repo的地址改为 http://127.0.0.1:8879
+#将/etc/ansible/role/helm/default/main.yml中repo的地址改为 http://127.0.0.1:8879
 cat <<EOF >/etc/ansible/role/helm/default/main.yml
 helm_namespace: kube-system 
 helm_cert_cn: helm001
@@ -192,7 +192,7 @@ type: kubernetes.io/dockerconfigjson
 
 修改harbor的运行配置，需要如下步骤：
 
-```
+```shell
 # 停止 harbor
  docker-compose down -v
 # 修改配置
@@ -207,7 +207,7 @@ type: kubernetes.io/dockerconfigjson
 
 以下步骤基于harbor 1.1.2 版本升级到 1.2.2版本
 
-```
+```dockerfile
 # 进入harbor解压缩后的目录，停止harbor
 cd /data/harbor
 docker-compose down

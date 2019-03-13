@@ -129,4 +129,8 @@ https://www.colabug.com/3973167.html
 
 
 
+问题：docker镜像推送失败
+
+原因：docker挂载盘满，目录：`/var/lib/docker`
+
  
