@@ -44,3 +44,11 @@ liuyuanzhe: 119af2b611fb690815ecd1ce84fd3422c355510a
 mvn:
 
  mvn sonar:sonar   -Dsonar.host.url=http://10.10.70.211:32119   -Dsonar.login=119af2b611fb690815ecd1ce84fd3422c355510a
+
+
+
+
+
+
+
+find /home/user/a/ -maxdepth 1 -type d -mtime +3 -name "(a|b|c)" -exec rm -rf {} \;

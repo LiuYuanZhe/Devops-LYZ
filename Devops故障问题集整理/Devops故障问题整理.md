@@ -32,6 +32,24 @@
 
 `systemctl restart docker`
 
+## kubernetes 
+
+问题：kubectl不能正常使用，比如使用kubectl命令行出现unable to connect to the server:EOF
+
+原因：可能是kubernetes相关组件运行不正常，首先现在kubernetes主节点使用命令检查kubernetes相关系统组件是否正常。
+
+```shell
+##这里只是伪码表示，真正的命令需要分开
+systemctl status kube-apiserver|kube-controller-manager|kube-proxy|kube-shedular
+
+```
+
+解决方案：如果这四个状态不是running的话（比如loaded），请使用命令重启这几个组件
+
+```shell
+systemctl restart kube-apiserver|kube-controller-manager|kube-proxy|kube-shedular
+```
+
 
 
  ## kubernetes node
@@ -41,6 +59,10 @@
  解决方案：节点网络故障，首先重启docker服务，重启该节点机器，有时候会有重启机器后仍然不能恢复的状态，或机器在reboot命令后不能登录，但是能ping通的情况，这是该机器在重启过程中被某进程卡住阻塞关机进程，这时如果是虚拟机的话可以登录vmware控制台直接拔掉电源级别重启，此时如果恢复即可。
 
 
+
+ 问题：kubernetes集群升级
+
+ 解决方案：集群升级时未避免运行容器将节点压垮，请逐台升级。
 
 
 
@@ -132,5 +154,11 @@ https://www.colabug.com/3973167.html
 问题：docker镜像推送失败
 
 原因：docker挂载盘满，目录：`/var/lib/docker`
+
+
+
+
+
+
 
  

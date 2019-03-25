@@ -6,7 +6,7 @@
 
   2.填写相关的kubernetes的pod需要分配的资源信息，挂载盘等。
 
-  ![](./img/Jenkinsfile2-.jpeg ''图片title'')
+  ![](./img/Jenkinsfile-2.jpeg ''图片title'')
 
   3.填写相关的jenkins的pipeline信息，pipeline以stage来区分构建流程，每一个stage是一个步骤。
 
